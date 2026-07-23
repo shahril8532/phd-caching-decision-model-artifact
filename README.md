@@ -43,9 +43,14 @@ The rule is validated against three independently operated, production Laravel/E
 ├── analysis/
 │   ├── decision_rule.py           Independent Python re-implementation of Equation 5.1
 │   ├── power_analysis.py          Post-hoc statistical power per relationship (G*Power-equivalent)
-│   └── plot_power_analysis.py     Generates figures/power_analysis_chart.png (Figure 5.1 in the thesis)
+│   ├── plot_power_analysis.py     Generates figures/power_analysis_chart.png (Figure 5.1 in the thesis)
+│   └── plot_speedup_charts.py     Generates the cold-time vs speedup scatter charts below
 ├── figures/
-│   └── power_analysis_chart.png   Power-per-relationship chart, colour-coded by decision
+│   ├── power_analysis_chart.png   Power-per-relationship chart, colour-coded by decision
+│   ├── speedup_chart_iteams.png   Cold access time vs speedup, iTeams (n=63)
+│   ├── speedup_chart_khairat.png  Cold access time vs speedup, Khairat Kematian (n=36)
+│   ├── speedup_chart_vbs.png      Cold access time vs speedup, VBS (n=16)
+│   └── speedup_chart_combined.png All three systems combined, one chart
 ├── LICENSE
 ├── CITATION.cff
 ├── .gitignore
@@ -111,6 +116,25 @@ effect size relative to n=10, rather than a weakness of the decision rule itself
 
 *Figure: Post-hoc statistical power per relationship, sorted within each system. Green = CACHE,
 red = DO_NOT_CACHE, orange = BORDERLINE. Regenerate with `python3 analysis/plot_power_analysis.py`.*
+
+## Cold access time vs speedup charts
+
+`analysis/plot_speedup_charts.py` regenerates the cold-access-time-vs-speedup scatter charts
+(the same charts shown in Chapter 4 of the thesis and inside the `*_Phase2_Aggregated_Analysis.xlsx`
+workbooks) directly from the raw CSVs in `data/`, using the exact same Equation 5.1 decision
+rule as `decision_rule.py` to colour each point:
+
+```bash
+pip install matplotlib scipy
+python3 analysis/plot_speedup_charts.py                  # writes all 4 charts to figures/
+python3 analysis/plot_speedup_charts.py --system iTeams   # regenerate just one system
+```
+
+![Cold access time vs speedup, all systems combined](figures/speedup_chart_combined.png)
+
+*Figure: Cold access time (log scale) vs caching speedup, all three systems combined. Marker
+shape = system, colour = Equation 5.1 decision (green = CACHE, red = DO_NOT_CACHE,
+orange = BORDERLINE). Per-system versions are in `figures/speedup_chart_<system>.png`.*
 
 ## Key finding
 
