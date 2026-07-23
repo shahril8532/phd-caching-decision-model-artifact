@@ -75,6 +75,27 @@ python3 analysis/decision_rule.py data/VBS
 
 This has been verified to reproduce the thesis-cited figures exactly, e.g. for iTeams' `Unit.pkg` relationship: **t = -3.557, p = 0.0031, DO_NOT_CACHE** — matching Chapter 5, Table 5.1 of the thesis to 4 decimal places.
 
+## Post-hoc statistical power analysis
+
+`analysis/power_analysis.py` computes post-hoc statistical power for each relationship's
+Equation 5.1 t-test (n = 10 repeated runs), using the same one-sample t-test power
+calculation as G*Power ("t tests — Means: difference from constant, one sample case"):
+
+```bash
+pip install statsmodels scipy
+python3 analysis/power_analysis.py data/iTeams
+python3 analysis/power_analysis.py data/Khairat
+python3 analysis/power_analysis.py data/VBS
+```
+
+**Finding:** all 63 iTeams relationships and all 16 VBS relationships achieved >= 0.80
+power at n=10 given their observed effect size. In Khairat, all `CACHE`/`DO_NOT_CACHE`
+decisions were well-powered (power >= 0.99 in every case), and the only two relationships
+below the 0.80 power target — `DeathClaim.dependent` and `Register.sponsorHubungan` — are
+exactly the two relationships the decision rule already classifies as `BORDERLINE`. This
+supports treating `BORDERLINE` as a genuinely inconclusive result driven by a small true
+effect size relative to n=10, rather than a weakness of the decision rule itself.
+
 ## Key finding
 
 A relationship's own cold (uncached) access time, measured empirically and analysed through repeated-measures statistical testing, provides a reliable, system-specific basis for the caching decision. The decision-making *process* generalises across all three independently operated systems even where the underlying numeric measurements (and, in VBS's case, even the direction of the cold-time/speedup correlation) do not transfer directly between them — see the thesis, Chapter 5.6, for the full discussion of this generalisability boundary.
