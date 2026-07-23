@@ -26,18 +26,29 @@ The rule is validated against three independently operated, production Laravel/E
 ```
 .
 ├── code/                          Benchmark harness (PHP artisan command) per system
-│   ├── iTeams/BenchmarkCaching.php
-│   ├── Khairat/BenchmarkCaching.php
-│   └── VBS/BenchmarkCaching_vbs.php
+│   ├── iTeams/
+│   │   ├── BenchmarkCaching.php
+│   │   └── relationships_for_benchmark.csv
+│   ├── Khairat/
+│   │   ├── BenchmarkCaching.php
+│   │   └── relationships_for_benchmark_khairat.csv
+│   └── VBS/
+│       ├── BenchmarkCaching_vbs.php
+│       └── relationships_for_benchmark_vbs.csv
 ├── data/
 │   ├── iTeams/                    10 repeated benchmark runs + aggregated results (CSV)
 │   ├── Khairat/                   10 repeated benchmark runs + aggregated results (CSV)
 │   ├── VBS/                       10 repeated benchmark runs + aggregated results (CSV)
 │   └── relationship_inventories/  Static relationship inventory per system (CSV)
 ├── analysis/
-│   └── decision_rule.py           Independent Python re-implementation of Equation 5.1
+│   ├── decision_rule.py           Independent Python re-implementation of Equation 5.1
+│   ├── power_analysis.py          Post-hoc statistical power per relationship (G*Power-equivalent)
+│   └── plot_power_analysis.py     Generates figures/power_analysis_chart.png (Figure 5.1 in the thesis)
+├── figures/
+│   └── power_analysis_chart.png   Power-per-relationship chart, colour-coded by decision
 ├── LICENSE
 ├── CITATION.cff
+├── .gitignore
 └── README.md
 ```
 
@@ -95,6 +106,11 @@ below the 0.80 power target — `DeathClaim.dependent` and `Register.sponsorHubu
 exactly the two relationships the decision rule already classifies as `BORDERLINE`. This
 supports treating `BORDERLINE` as a genuinely inconclusive result driven by a small true
 effect size relative to n=10, rather than a weakness of the decision rule itself.
+
+![Post-hoc power per relationship](figures/power_analysis_chart.png)
+
+*Figure: Post-hoc statistical power per relationship, sorted within each system. Green = CACHE,
+red = DO_NOT_CACHE, orange = BORDERLINE. Regenerate with `python3 analysis/plot_power_analysis.py`.*
 
 ## Key finding
 
