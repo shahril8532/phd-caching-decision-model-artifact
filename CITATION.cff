@@ -11,6 +11,10 @@ authors:
     email: "nurulakmar@utem.edu.my"
     affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
 date-released: "2026-07-23"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21505973
+    description: "Archived snapshot of this release on Zenodo"
 license: "MIT AND CC-BY-4.0"
 repository-code: "https://github.com/shahril8532/phd-caching-decision-model-artifact"
 keywords:
