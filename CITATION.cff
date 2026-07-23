@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "A Decision Model for Determining What to Cache in ORM-Based Database Applications: Reproducibility Artifact"
+authors:
+  - family-names: "Mohd Isa"
+    given-names: "Shahril"
+    email: "shahril3421@gmail.com"
+    affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
+  - family-names: "Emran"
+    given-names: "Nurul Akmar"
+    email: "nurulakmar@utem.edu.my"
+    affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
+date-released: "2026-07-23"
+license: "MIT AND CC-BY-4.0"
+repository-code: "https://github.com/shahril8532/phd-caching-decision-model-artifact"
+keywords:
+  - caching
+  - ORM
+  - Eloquent
+  - Laravel
+  - database performance
+  - decision model
+  - software performance engineering
+abstract: >
+  Raw benchmark data (10 repeated runs per system), relationship inventories,
+  and benchmark harness code for a PhD thesis proposing a statistical
+  decision rule (a one-sample t-test over repeated per-relationship
+  cold/warm cache access measurements) for determining which
+  Eloquent/ORM relationships are worth caching. Validated across three
+  independently operated Laravel/Eloquent systems: iTeams, Khairat
+  Kematian, and the Vehicle Booking System (VBS).

@@ -1,0 +1,17 @@
+No.,Source Model,Method Name,Relationship Type,Related Model,Pivot Table,Custom FK,Eager-Load Hits,Access Pattern,Write Ops Hits (related model),Volatility (related model),Static Feature Notes
+1,Booking,driver,belongsTo,Driver,,,0,Not eager-loaded (lazy/on-demand only),3,Medium,Parent lookup - single-row fetch; excluded from benchmark: none
+2,Booking,vehicle,belongsTo,Vehicle,,,0,Not eager-loaded (lazy/on-demand only),3,Medium,Parent lookup - single-row fetch
+3,Booking,pengguna,belongsTo,Pengguna,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+4,Booking,pegawai,belongsTo,Pegawai,,,0,Not eager-loaded (lazy/on-demand only),3,Medium,Parent lookup - single-row fetch
+5,Driver,booking,hasMany,Booking,,,0,Not eager-loaded (lazy/on-demand only),5,High (frequent writes),"Collection relationship - serialises multiple rows; bookings table has 3,764 rows in production"
+6,Pegawai,jawatan,belongsTo,Jawatan,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+7,Pegawai,sektor,belongsTo,Sektor,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+8,Pegawai,unit,belongsTo,Unit,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+9,Pegawai,booking,hasMany,Booking,,,0,Not eager-loaded (lazy/on-demand only),5,High (frequent writes),Collection relationship - serialises multiple rows
+10,Pengguna,jawatan,belongsTo,Jawatan,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+11,Pengguna,sektor,belongsTo,Sektor,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+12,Pengguna,unit,belongsTo,Unit,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+13,Pengguna,booking,hasMany,Booking,,,0,Not eager-loaded (lazy/on-demand only),5,High (frequent writes),Collection relationship - serialises multiple rows
+14,User,sektor,belongsTo,Sektor,,,0,Not eager-loaded (lazy/on-demand only),2,Low,Parent lookup - single-row fetch
+15,Vehicle,driver,belongsTo,Driver,,,0,Not eager-loaded (lazy/on-demand only),3,Medium,Parent lookup - single-row fetch
+16,Vehicle,booking,hasMany,Booking,,,0,Not eager-loaded (lazy/on-demand only),5,High (frequent writes),Collection relationship - serialises multiple rows

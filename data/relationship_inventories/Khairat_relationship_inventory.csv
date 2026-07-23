@@ -1,0 +1,52 @@
+No.,Source Model,Method,Relationship Type,Related Model,Custom FK,Eager-Load Hits (codebase-wide),Access Pattern,Write Ops Hits (related model),Volatility (related model),Static Feature Notes
+1,AdminNotification,user,belongsTo,User,,0,Never eager-loaded (lazy only),10,MEDIUM,candidate for N+1 risk / manual review
+2,ContributionRecord,deathClaim,belongsTo,DeathClaim,,0,Never eager-loaded (lazy only),7,MEDIUM,candidate for N+1 risk / manual review
+3,ContributionRecord,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+4,ContributionRecord,lorong,belongsTo,Lorong,,11,Eager-loaded,1,LOW,
+5,ContributionSetting,deathClaims,hasMany,DeathClaim,,0,Never eager-loaded (lazy only),7,MEDIUM,candidate for N+1 risk / manual review
+6,DeathClaim,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+7,DeathClaim,dependent,belongsTo,Dependent,,4,Eager-loaded,7,MEDIUM,
+8,DeathClaim,contributionSetting,belongsTo,ContributionSetting,,0,Never eager-loaded (lazy only),1,LOW,candidate for N+1 risk / manual review
+9,DeathClaim,claimant,belongsTo,User,claimant_user_id,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: claimant_user_id; candidate for N+1 risk / manual review
+10,DeathClaim,ajkVerifiedBy,belongsTo,User,ajk_verified_by,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: ajk_verified_by; candidate for N+1 risk / manual review
+11,DeathClaim,adminApprovedBy,belongsTo,User,admin_approved_by,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: admin_approved_by; candidate for N+1 risk / manual review
+12,DeathClaim,newMemberRegister,belongsTo,Register,new_member_register_id,0,Never eager-loaded (lazy only),26,HIGH,custom FK: new_member_register_id; candidate for N+1 risk / manual review
+13,DeathClaim,contributionRecords,hasMany,ContributionRecord,,0,Never eager-loaded (lazy only),1,LOW,candidate for N+1 risk / manual review
+14,Dependent,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+15,Dependent,hubungan,belongsTo,Hubungan,,1,Eager-loaded,1,LOW,
+16,Dependent,changeRequest,hasMany,DependentChangeRequest,,0,Never eager-loaded (lazy only),7,MEDIUM,candidate for N+1 risk / manual review
+17,DependentChange,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+18,DependentChange,dependent,belongsTo,Dependent,,4,Eager-loaded,7,MEDIUM,
+19,DependentChange,submittedByUser,belongsTo,User,submitted_by,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: submitted_by; candidate for N+1 risk / manual review
+20,DependentChange,approvedByUser,belongsTo,User,approved_by,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: approved_by; candidate for N+1 risk / manual review
+21,DependentChangeRequest,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+22,DependentChangeRequest,dependent,belongsTo,Dependent,,4,Eager-loaded,7,MEDIUM,
+23,DependentChangeRequest,createdBy,belongsTo,User,created_by,4,Eager-loaded,10,MEDIUM,custom FK: created_by
+24,Hubungan,register,hasMany,Register,,6,Eager-loaded,26,HIGH,
+25,Hubungan,dependent,hasMany,Dependent,,4,Eager-loaded,7,MEDIUM,
+26,Jawatan,user,hasMany,User,,0,Never eager-loaded (lazy only),10,MEDIUM,candidate for N+1 risk / manual review
+27,Jawatan,pegawai,hasMany,Pegawai,,0,Never eager-loaded (lazy only),2,LOW,candidate for N+1 risk / manual review
+28,LoginLog,user,belongsTo,User,,0,Never eager-loaded (lazy only),10,MEDIUM,candidate for N+1 risk / manual review
+29,Lorong,user,hasMany,User,,0,Never eager-loaded (lazy only),10,MEDIUM,candidate for N+1 risk / manual review
+30,MemberNotification,user,belongsTo,User,,0,Never eager-loaded (lazy only),10,MEDIUM,candidate for N+1 risk / manual review
+31,MembershipRenewal,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+32,PaymentApproval,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+33,PaymentApproval,ajkUser,belongsTo,User,ajk_user_id,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: ajk_user_id; candidate for N+1 risk / manual review
+34,Pegawai,jawatan,belongsTo,Jawatan,,6,Eager-loaded,3,LOW,
+35,Register,user,belongsTo,User,,0,Never eager-loaded (lazy only),10,MEDIUM,candidate for N+1 risk / manual review
+36,Register,lorong,belongsTo,Lorong,,11,Eager-loaded,1,LOW,
+37,Register,jawatan,belongsTo,Jawatan,,6,Eager-loaded,3,LOW,
+38,Register,hubungan,belongsTo,Hubungan,,1,Eager-loaded,1,LOW,
+39,Register,dependents,hasMany,Dependent,,3,Eager-loaded,7,MEDIUM,
+40,Register,pegawais,hasMany,Pegawai,,0,Never eager-loaded (lazy only),2,LOW,candidate for N+1 risk / manual review
+41,Register,approvedByAjk,belongsTo,User,approved_by_ajk,3,Eager-loaded,10,MEDIUM,custom FK: approved_by_ajk
+42,Register,paymentVerifiedBy,belongsTo,User,payment_verified_by,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: payment_verified_by; candidate for N+1 risk / manual review
+43,Register,sponsorUser,belongsTo,User,sponsor_user_id,0,Never eager-loaded (lazy only),10,MEDIUM,custom FK: sponsor_user_id; candidate for N+1 risk / manual review
+44,Register,paymentApprovals,hasMany,PaymentApproval,,0,Never eager-loaded (lazy only),2,LOW,candidate for N+1 risk / manual review
+45,Register,sponsorHubungan,belongsTo,SponsorRelationship,sponsor_hubungan_id,2,Eager-loaded,0,LOW,custom FK: sponsor_hubungan_id
+46,RegisterRejection,register,belongsTo,Register,,6,Eager-loaded,26,HIGH,
+47,SponsorRelationship,registers,hasMany,Register,sponsor_hubungan_id,0,Never eager-loaded (lazy only),26,HIGH,custom FK: sponsor_hubungan_id; candidate for N+1 risk / manual review
+48,User,lorong,belongsTo,Lorong,,11,Eager-loaded,1,LOW,
+49,User,jawatan,belongsTo,Jawatan,,6,Eager-loaded,3,LOW,
+50,User,register,hasMany,Register,,6,Eager-loaded,26,HIGH,
+51,User,loginLogs,hasMany,LoginLog,,0,Never eager-loaded (lazy only),0,LOW,candidate for N+1 risk / manual review
