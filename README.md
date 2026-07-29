@@ -37,11 +37,15 @@ The rule is validated against three independently operated, production Laravel/E
 │       └── relationships_for_benchmark_vbs.csv
 ├── data/
 │   ├── iTeams/                    10 repeated benchmark runs + aggregated results (CSV)
+│   │   └── rerun/                 10 replication runs (v1.3.0)
 │   ├── Khairat/                   10 repeated benchmark runs + aggregated results (CSV)
+│   │   └── rerun/                 10 replication runs (v1.3.0)
 │   ├── VBS/                       10 repeated benchmark runs + aggregated results (CSV)
+│   │   └── rerun/                 10 replication runs (v1.3.0)
 │   └── relationship_inventories/  Static relationship inventory per system (CSV)
 ├── analysis/
 │   ├── decision_rule.py           Independent Python re-implementation of Equation 5.1
+│   ├── compare_replication.py     Original vs replication agreement (v1.3.0)
 │   ├── power_analysis.py          Post-hoc statistical power per relationship (G*Power-equivalent)
 │   ├── plot_power_analysis.py     Generates figures/power_analysis_chart.png (Figure 5.1 in the thesis)
 │   └── plot_speedup_charts.py     Generates the cold-time vs speedup scatter charts below
@@ -139,6 +143,43 @@ orange = BORDERLINE). Per-system versions are in `figures/speedup_chart_<system>
 ## Key finding
 
 A relationship's own cold (uncached) access time, measured empirically and analysed through repeated-measures statistical testing, provides a reliable, system-specific basis for the caching decision. The decision-making *process* generalises across all three independently operated systems even where the underlying numeric measurements (and, in VBS's case, even the direction of the cold-time/speedup correlation) do not transfer directly between them — see the thesis, Chapter 5.6, for the full discussion of this generalisability boundary.
+
+## Replication campaign (v1.3.0)
+
+The original measurement campaign ran on 19-20 July 2026. To test whether the reported
+classification reflects a property of the relationships or the particular conditions of a
+single campaign, the complete procedure was re-executed from scratch on all three systems
+ten days later, ten runs of 30 samples each.
+
+This is not a controlled experiment isolating one factor. Several conditions varied at once
+and none was held fixed by design: elapsed time, incidental server load, database contents,
+and the parent-record identifiers drawn by random sampling. Only the procedure, the
+benchmarking command, and the relationship inventories were held constant. One condition was
+tightened rather than varied: the language interpreter was pinned to the version serving each
+site (PHP 8.2 iTeams, 8.3 Khairat Kematian, 8.1 VBS), which the original campaign did not
+record in its output.
+
+Reproduce with:
+
+```bash
+python3 analysis/compare_replication.py
+```
+
+Result:
+
+| System | Relationships | Agreement | Mean cold access (ms) |
+|---|---|---|---|
+| iTeams | 63 | 63/63 (100%) | 0.993 -> 2.824 |
+| Khairat Kematian | 36 | 34/36 (94.4%) | 4.094 -> 2.559 |
+| VBS | 16 | 16/16 (100%) | 1.327 -> 2.401 |
+| **Total** | **115** | **113/115 (98.3%)** | |
+
+All eight DO_NOT_CACHE relationships reproduced, and all CACHE relationships reproduced,
+while mean cold access time shifted by between -38% and +184%. The only two classifications
+that changed were exactly the two the decision rule had returned as BORDERLINE, and they
+resolved in opposite directions: `DeathClaim.dependent` to CACHE (+1.27% -> +10.45%,
+p = 0.0045) and `Register.sponsorHubungan` to DO_NOT_CACHE (-3.55% -> -25.64%, p < 0.0001).
+Had the rule been forced to commit on those two, it would have been wrong on one of them.
 
 ## Citation
 
