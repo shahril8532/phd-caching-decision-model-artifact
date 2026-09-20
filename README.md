@@ -1,4 +1,4 @@
-# A Decision Model for Determining What to Cache in ORM-Based Database Applications
+# A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based Database Applications
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21505973.svg)](https://doi.org/10.5281/zenodo.21505973)
 
