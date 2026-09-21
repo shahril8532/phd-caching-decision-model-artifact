@@ -155,6 +155,6 @@ If you use this data or code, please cite the thesis (see `CITATION.cff`).
 
 ## Contact
 
-Shahril bin Mohd Isa — shahril3421@gmail.com
+Shahril bin Mohd Isa — shahril3421@gmail.com 
 Corresponding supervisor: Assoc. Prof. Ts. Dr. Nurul Akmar Emran — nurulakmar@utem.edu.my  
 Co-supervisor: Dr. Nurul Izrin binti Md Saleh — izrin@utem.edu.my
