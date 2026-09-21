@@ -5,7 +5,7 @@
 
 Reproducibility artifact for the PhD research of **Shahril bin Mohd Isa**, Fakulti Teknologi Maklumat dan Komunikasi (FTMK), Universiti Teknikal Malaysia Melaka (UTeM), supervised by Assoc. Prof. Ts. Dr. Nurul Akmar Emran.
 
-This repository contains the raw empirical data, benchmark harness code, and an independent analysis script supporting the thesis/proposal *"A Decision Model for Determining What to Cache in ORM-Based Database Applications: Balancing Performance and Resource Cost."*
+This repository contains the raw empirical data, benchmark harness code, and an independent analysis script supporting the thesis/proposal *"A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based database Applications."*
 
 ## What this research is about
 
