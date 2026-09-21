@@ -1,17 +1,19 @@
 # A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based Database Applications
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21505973.svg)](https://doi.org/10.5281/zenodo.21505973)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21510763.svg)](https://doi.org/10.5281/zenodo.21510763)
+
+Archived record: <https://zenodo.org/records/21510763>
 
 
-Reproducibility artifact for the PhD research of **Shahril bin Mohd Isa**, Fakulti Teknologi Maklumat dan Komunikasi (FTMK), Universiti Teknikal Malaysia Melaka (UTeM), supervised by Assoc. Prof. Ts. Dr. Nurul Akmar Emran.
+Reproducibility artifact for the PhD research of **Shahril bin Mohd Isa**, Fakulti Teknologi Maklumat dan Komunikasi (FTMK), Universiti Teknikal Malaysia Melaka (UTeM), supervised by Assoc. Prof. Ts. Dr. Nurul Akmar Emran and co-supervised by Dr. Nurul Izrin binti Md Saleh.
 
-This repository contains the raw empirical data, benchmark harness code, and an independent analysis script supporting the thesis/proposal *"A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based database Applications."*
+This repository contains the raw empirical data, benchmark harness code, and an independent analysis script supporting the thesis/proposal *"A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based Database Applications."*
 
 ## What this research is about
 
 Object-Relational Mapping (ORM) frameworks such as Laravel's Eloquent hide the true performance cost of a data-access operation behind simple object syntax (e.g. `$model->relatedItems`). This makes it hard for developers to know, in advance, which ORM relationships are worth caching and which are not — caching the wrong ones can *degrade* performance rather than improve it.
 
-This research proposes and empirically validates a **decision rule** (Equation 5.1: a one-sample t-test applied to repeated per-relationship speedup measurements) that classifies each ORM relationship as `CACHE`, `DO_NOT_CACHE`, or `BORDERLINE`, based purely on repeated, controlled measurement — no machine learning involved.
+This research proposes and empirically validates a **decision rule** (Equation 4.1: a one-sample t-test applied to repeated per-relationship speedup measurements) that classifies each ORM relationship as `CACHE`, `DO_NOT_CACHE`, or `BORDERLINE`, based purely on repeated, controlled measurement — no machine learning involved.
 
 The rule is validated against three independently operated, production Laravel/Eloquent systems:
 
@@ -41,9 +43,9 @@ The rule is validated against three independently operated, production Laravel/E
 │   ├── VBS/                       10 repeated benchmark runs + aggregated results (CSV)
 │   └── relationship_inventories/  Static relationship inventory per system (CSV)
 ├── analysis/
-│   ├── decision_rule.py           Independent Python re-implementation of Equation 5.1
+│   ├── decision_rule.py           Independent Python re-implementation of Equation 4.1
 │   ├── power_analysis.py          Post-hoc statistical power per relationship (G*Power-equivalent)
-│   ├── plot_power_analysis.py     Generates figures/power_analysis_chart.png (Figure 5.1 in the thesis)
+│   ├── plot_power_analysis.py     Generates figures/power_analysis_chart.png (Figure 4.5 in the thesis)
 │   └── plot_speedup_charts.py     Generates the cold-time vs speedup scatter charts below
 ├── figures/
 │   ├── power_analysis_chart.png   Power-per-relationship chart, colour-coded by decision
@@ -80,7 +82,7 @@ Data dictionary for `benchmark_run_*.csv`:
 
 ## Reproducing the decision rule independently
 
-The thesis computes Equation 5.1 (t-statistic, p-value, formal `CACHE`/`DO_NOT_CACHE`/`BORDERLINE` decision) as live Excel formulas inside the `*_Phase2_Aggregated_Analysis.xlsx` workbooks (not included here — see the main thesis document set). `analysis/decision_rule.py` re-implements the same one-sample t-test independently in Python, so the result can be verified without opening Excel:
+The thesis computes Equation 4.1 (t-statistic, p-value, formal `CACHE`/`DO_NOT_CACHE`/`BORDERLINE` decision) as live Excel formulas inside the `*_Phase2_Aggregated_Analysis.xlsx` workbooks (not included here — see the main thesis document set). `analysis/decision_rule.py` re-implements the same one-sample t-test independently in Python, so the result can be verified without opening Excel:
 
 ```bash
 pip install scipy   # optional but recommended for exact p-values
@@ -89,12 +91,12 @@ python3 analysis/decision_rule.py data/Khairat
 python3 analysis/decision_rule.py data/VBS
 ```
 
-This has been verified to reproduce the thesis-cited figures exactly, e.g. for iTeams' `Unit.pkg` relationship: **t = -3.557, p = 0.0031, DO_NOT_CACHE** — matching Chapter 5, Table 5.1 of the thesis to 4 decimal places.
+This has been verified to reproduce the thesis-cited figures exactly, e.g. for iTeams' `Unit.pkg` relationship: **t = -3.557, p = 0.0031, DO_NOT_CACHE** — matching the discussion of the single rule/sign-consistency disagreement in Section 4.7 of the thesis.
 
 ## Post-hoc statistical power analysis
 
 `analysis/power_analysis.py` computes post-hoc statistical power for each relationship's
-Equation 5.1 t-test (n = 10 repeated runs), using the same one-sample t-test power
+Equation 4.1 t-test (n = 10 repeated runs), using the same one-sample t-test power
 calculation as G*Power ("t tests — Means: difference from constant, one sample case"):
 
 ```bash
@@ -115,13 +117,14 @@ effect size relative to n=10, rather than a weakness of the decision rule itself
 ![Post-hoc power per relationship](figures/power_analysis_chart.png)
 
 *Figure: Post-hoc statistical power per relationship, sorted within each system. Green = CACHE,
-red = DO_NOT_CACHE, orange = BORDERLINE. Regenerate with `python3 analysis/plot_power_analysis.py`.*
+red = DO_NOT_CACHE, orange = BORDERLINE. Corresponds to Figure 4.5 in the thesis. Regenerate with
+`python3 analysis/plot_power_analysis.py`.*
 
 ## Cold access time vs speedup charts
 
 `analysis/plot_speedup_charts.py` regenerates the cold-access-time-vs-speedup scatter charts
-(the same charts shown in Chapter 4 of the thesis and inside the `*_Phase2_Aggregated_Analysis.xlsx`
-workbooks) directly from the raw CSVs in `data/`, using the exact same Equation 5.1 decision
+(Figures 4.1 to 4.4 of the thesis, also shown inside the `*_Phase2_Aggregated_Analysis.xlsx`
+workbooks) directly from the raw CSVs in `data/`, using the exact same Equation 4.1 decision
 rule as `decision_rule.py` to colour each point:
 
 ```bash
@@ -133,12 +136,13 @@ python3 analysis/plot_speedup_charts.py --system iTeams   # regenerate just one 
 ![Cold access time vs speedup, all systems combined](figures/speedup_chart_combined.png)
 
 *Figure: Cold access time (log scale) vs caching speedup, all three systems combined. Marker
-shape = system, colour = Equation 5.1 decision (green = CACHE, red = DO_NOT_CACHE,
-orange = BORDERLINE). Per-system versions are in `figures/speedup_chart_<system>.png`.*
+shape = system, colour = Equation 4.1 decision (green = CACHE, red = DO_NOT_CACHE,
+orange = BORDERLINE). Corresponds to Figure 4.4 in the thesis; per-system versions are in
+`figures/speedup_chart_<system>.png`.*
 
 ## Key finding
 
-A relationship's own cold (uncached) access time, measured empirically and analysed through repeated-measures statistical testing, provides a reliable, system-specific basis for the caching decision. The decision-making *process* generalises across all three independently operated systems even where the underlying numeric measurements (and, in VBS's case, even the direction of the cold-time/speedup correlation) do not transfer directly between them — see the thesis, Chapter 5.6, for the full discussion of this generalisability boundary.
+A relationship's own cold (uncached) access time, measured empirically and analysed through repeated-measures statistical testing, provides a reliable, system-specific basis for the caching decision. The decision-making *process* generalises across all three independently operated systems even where the underlying numeric measurements (and, in VBS's case, even the direction of the cold-time/speedup correlation) do not transfer directly between them — see the thesis, Section 4.10, for the full discussion of this generalisability boundary.
 
 ## Citation
 
@@ -152,4 +156,5 @@ If you use this data or code, please cite the thesis (see `CITATION.cff`).
 ## Contact
 
 Shahril bin Mohd Isa — shahril3421@gmail.com
-Corresponding supervisor: Assoc. Prof. Ts. Dr. Nurul Akmar Emran — nurulakmar@utem.edu.my
+Corresponding supervisor: Assoc. Prof. Ts. Dr. Nurul Akmar Emran — nurulakmar@utem.edu.my  
+Co-supervisor: Dr. Nurul Izrin binti Md Saleh — izrin@utem.edu.my
