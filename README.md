@@ -55,6 +55,7 @@ The rule is validated against three independently operated, production Laravel/E
 │   └── speedup_chart_combined.png All three systems combined, one chart
 ├── LICENSE
 ├── CITATION.cff
+├── requirements.txt                Python dependencies for analysis/ (scipy, statsmodels, matplotlib)
 ├── .gitignore
 └── README.md
 ```
