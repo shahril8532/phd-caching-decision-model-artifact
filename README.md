@@ -82,6 +82,8 @@ Data dictionary for `benchmark_run_*.csv`:
 
 ## Reproducing the decision rule independently
 
+Quick setup: `pip install -r requirements.txt` installs everything needed for all three analysis scripts below (`scipy`, `statsmodels`, `matplotlib`). The per-script `pip install` lines are also given individually in case you only want to run one of them.
+
 The thesis computes Equation 4.1 (t-statistic, p-value, formal `CACHE`/`DO_NOT_CACHE`/`BORDERLINE` decision) as live Excel formulas inside the `*_Phase2_Aggregated_Analysis.xlsx` workbooks (not included here — see the main thesis document set). `analysis/decision_rule.py` re-implements the same one-sample t-test independently in Python, so the result can be verified without opening Excel:
 
 ```bash
@@ -155,6 +157,7 @@ If you use this data or code, please cite the thesis (see `CITATION.cff`).
 
 ## Contact
 
-Shahril bin Mohd Isa — shahril3421@gmail.com 
+Shahril bin Mohd Isa — shahril3421@gmail.com
+
 Corresponding supervisor: Assoc. Prof. Ts. Dr. Nurul Akmar Emran — nurulakmar@utem.edu.my  
 Co-supervisor: Dr. Nurul Izrin binti Md Saleh — izrin@utem.edu.my
