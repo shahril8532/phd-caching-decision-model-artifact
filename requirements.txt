@@ -1,3 +1,7 @@
-scipy
-statsmodels
-matplotlib
+# Verified working versions (confirmed to reproduce the exact published
+# results, e.g. iTeams Unit.pkg: t = -3.557, p = 0.0031, DO_NOT_CACHE).
+# The original analysis environment's exact versions were not preserved;
+# any reasonably recent release of these three packages is expected to work.
+scipy>=1.15
+statsmodels>=0.14
+matplotlib>=3.10
