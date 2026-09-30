@@ -1,8 +1,8 @@
 # A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based Database Applications
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21510763.svg)](https://doi.org/10.5281/zenodo.21510763)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21510763.svg)](https://doi.org/10.5281/zenodo.23054249)
 
-Archived record: <https://zenodo.org/records/21510763>
+Archived record: <https://zenodo.org/records/23054249>
 
 
 Reproducibility artifact for the PhD research of **Shahril bin Mohd Isa**, Fakulti Teknologi Maklumat dan Komunikasi (FTMK), Universiti Teknikal Malaysia Melaka (UTeM), supervised by Assoc. Prof. Ts. Dr. Nurul Akmar Emran and co-supervised by Dr. Nurul Izrin binti Md Saleh.
