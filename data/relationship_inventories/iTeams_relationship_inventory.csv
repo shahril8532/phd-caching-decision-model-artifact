@@ -1,0 +1,69 @@
+No.,Source Model,Method Name,Relationship Type,Related Model,Pivot Table,Custom FK,Eager-Load Hits,Access Pattern,Write Ops Hits (related model),Volatility (related model),Static Feature Notes
+1,ActivityLog,user,belongsTo,User,,,0,Not eager-loaded (lazy/on-demand only),12,High (frequent writes),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+2,Daerah,sekolah,hasOne,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+3,Daerah,ppd,hasOne,Ppd,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+4,Daerah,pkg,hasOne,Pkg,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+5,Daerah,pegawai,hasOne,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+6,DeviceRegistration,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+7,Group,permissions,hasMany,Permission,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+8,Jabatan,user,hasMany,User,,,0,Not eager-loaded (lazy/on-demand only),12,High (frequent writes),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+9,KategoriTugas,tugas,hasMany,Tugas,,,0,Not eager-loaded (lazy/on-demand only),10,High (frequent writes),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+10,Keberadaan,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+11,Keberadaan,sekolah,belongsTo,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+12,Pegawai,unit,belongsTo,Unit,,,0,Not eager-loaded (lazy/on-demand only),6,Medium,Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+13,Pegawai,daerah,belongsTo,Daerah,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+14,Pegawai,pkg,belongsTo,Pkg,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+15,Pegawai,ppd,belongsTo,Ppd,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+16,Pegawai,sekolah,belongsTo,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+17,Pegawai,pegawaiSekolahs,hasMany,PegawaiSekolah,,,0,Not eager-loaded (lazy/on-demand only),2,Low (admin-only occasional edits),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+18,Pegawai,sekolahs,belongsToMany,Sekolah,pegawai_sekolahs,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Pivot-table join — most expensive to compute; prime candidate for caching if pivot rarely changes
+19,Pegawai,tugasTerlibat,belongsToMany,Tugas,tugas_pegawai,,0,Not eager-loaded (lazy/on-demand only),10,High (frequent writes),Pivot-table join — most expensive to compute; prime candidate for caching if pivot rarely changes
+20,Pegawai,deviceRegistration,hasOne,DeviceRegistration,,pegawai_id,0,Not eager-loaded (lazy/on-demand only),2,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+21,PegawaiSekolah,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+22,PegawaiSekolah,sekolah,belongsTo,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+23,Permission,group,belongsTo,Group,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+24,Pkg,ppd,belongsTo,Ppd,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+25,Pkg,daerah,belongsTo,Daerah,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+26,Pkg,sekolah,hasOne,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+27,Pkg,pegawai,hasOne,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+28,Ppd,daerah,belongsTo,Daerah,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+29,Ppd,sekolah,hasOne,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+30,Ppd,pkg,hasOne,Pkg,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+31,Ppd,pegawai,hasOne,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+32,PushNotification,sentBy,belongsTo,User,,sent_by,0,Not eager-loaded (lazy/on-demand only),12,High (frequent writes),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+33,PushNotification,daerah,belongsTo,Daerah,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+34,PushNotification,recipientPegawai,belongsTo,Pegawai,,recipient_pegawai_id,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+35,Rangkaian,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+36,Rangkaian,sekolah,belongsTo,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+37,Rangkaian,isp,belongsTo,Isp,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+38,Rangkaian,jenistalian,belongsTo,Jenistalian,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+39,Rangkaian,kelajuan,belongsTo,Kelajuan,,,2,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+40,Rangkaian,kontrak,belongsTo,Kontrak,,,2,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+41,Rangkaian,ppd,belongsTo,Ppd,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+42,Rangkaian,jpn,belongsTo,Jpn,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+43,Rangkaian,lokasiRouters,belongsToMany,Lokasirouter,rangkaian_lokasi_router,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Pivot-table join — most expensive to compute; prime candidate for caching if pivot rarely changes
+44,Rangkaian,lokasiMeshRouters,belongsToMany,Lokasirouter,rangkaian_lokasi_mesh_router,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Pivot-table join — most expensive to compute; prime candidate for caching if pivot rarely changes
+45,Sekolah,daerah,belongsTo,Daerah,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+46,Sekolah,ppd,belongsTo,Ppd,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+47,Sekolah,pkg,belongsTo,Pkg,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+48,Sekolah,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+49,Sekolah,pegawaiSekolahs,hasMany,PegawaiSekolah,,,0,Not eager-loaded (lazy/on-demand only),2,Low (admin-only occasional edits),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+50,Sekolah,pegawais,belongsToMany,Pegawai,pegawai_sekolahs,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Pivot-table join — most expensive to compute; prime candidate for caching if pivot rarely changes
+51,Tugas,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+52,Tugas,user,belongsTo,User,,,0,Not eager-loaded (lazy/on-demand only),12,High (frequent writes),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+53,Tugas,sekolah,belongsTo,Sekolah,,,14,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+54,Tugas,kategoriTugas,belongsTo,KategoriTugas,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+55,Tugas,pegawaiTerlibat,belongsToMany,Pegawai,tugas_pegawai,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Pivot-table join — most expensive to compute; prime candidate for caching if pivot rarely changes
+56,Tugas,images,hasMany,TugasImage,,,0,Not eager-loaded (lazy/on-demand only),2,Low (admin-only occasional edits),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+57,Tugas,disahkanOleh,belongsTo,User,,disahkan_oleh,1,Occasionally eager-loaded,12,High (frequent writes),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+58,TugasImage,tugas,belongsTo,Tugas,,,0,Not eager-loaded (lazy/on-demand only),10,High (frequent writes),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+59,TugasPegawai,tugas,belongsTo,Tugas,,,0,Not eager-loaded (lazy/on-demand only),10,High (frequent writes),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+60,TugasPegawai,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+61,Unit,pegawai,hasOne,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Single related row — check access frequency vs update frequency
+62,Unit,pkg,belongsTo,Pkg,,,3,Occasionally eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+63,Unit,ppd,belongsTo,Ppd,,,0,Not eager-loaded (lazy/on-demand only),3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+64,User,tugas,hasOne,Tugas,,,0,Not eager-loaded (lazy/on-demand only),10,High (frequent writes),Single related row — check access frequency vs update frequency
+65,User,jabatan,belongsTo,Jabatan,,,57,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+66,User,pegawai,belongsTo,Pegawai,,,90,Frequently eager-loaded,3,Low (admin-only occasional edits),Parent lookup — usually cheap single-row fetch; cache-worthiness depends on parent volatility
+67,User,activityLogs,hasMany,ActivityLog,,,0,Not eager-loaded (lazy/on-demand only),1,Low (admin-only occasional edits),Potential N+1 source if loaded in a loop — strong caching candidate if parent list is large
+"Highlighted rows = no eager-load call found anywhere in Controllers (likely lazy-loaded on access, N+1 risk if used inside a loop — verify manually in Phase 1).",,,,,,,,,,,
