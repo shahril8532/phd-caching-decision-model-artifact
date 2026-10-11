@@ -1,0 +1,17 @@
+model,method,type,samples,avg_cold_ms,avg_warm_ms,speedup_pct,avg_query_count_cold,avg_query_count_warm,avg_cache_write_overhead_ms
+Booking,driver,belongsTo,30,2.839,0.155,94.5,1.9,0.1,1.232
+Booking,vehicle,belongsTo,30,0.967,0.12,87.5,1.93,0.07,1.08
+Booking,pengguna,belongsTo,30,1.444,0.099,93.2,2,0,1.163
+Booking,pegawai,belongsTo,30,1.034,0.066,93.6,2,0,0.873
+Driver,booking,hasMany,30,3.669,3.142,14.4,2,0,7.906
+Pegawai,jawatan,belongsTo,30,0.953,0.075,92.1,2,0,1.065
+Pegawai,sektor,belongsTo,30,0.906,0.071,92.2,2,0,0.87
+Pegawai,unit,belongsTo,30,0.743,0.072,90.2,2,0,0.847
+Pegawai,booking,hasMany,30,1.465,0.478,67.4,2,0,2.01
+Pengguna,jawatan,belongsTo,30,0.729,0.074,89.8,2,0,0.949
+Pengguna,sektor,belongsTo,30,0.626,0.064,89.8,2,0,0.799
+Pengguna,unit,belongsTo,30,0.725,0.074,89.8,2,0,0.877
+Pengguna,booking,hasMany,30,1.495,0.545,63.5,2,0,2.184
+User,sektor,belongsTo,21,0.582,0.055,90.5,2,0,0.7
+Vehicle,driver,belongsTo,30,0.772,0.072,90.7,2,0,0.912
+Vehicle,booking,hasMany,30,2.664,1.941,27.2,2,0,4.746
