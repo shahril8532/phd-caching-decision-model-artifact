@@ -1,7 +1,0 @@
-system,relationship,thesis_class,fk_column,source_table,rows,fk_null_rows,fk_dangling_rows,rows_resolving_to_null,note
-iTeams,PushNotification.daerah,DO_NOT_CACHE,daerah_id,push_notifications,334,334,0,334,
-Khairat,Register.sponsorUser,DO_NOT_CACHE,sponsor_user_id,registers,146,146,0,146,
-Khairat,Register.paymentVerifiedBy,DO_NOT_CACHE,payment_verified_by,registers,146,146,0,146,
-Khairat,Register.approvedByAjk,DO_NOT_CACHE,approved_by_ajk,registers,146,146,0,146,
-Khairat,Register.sponsorHubungan,BORDERLINE,sponsor_hubungan_id,registers,146,127,18,145,"18 rows hold value 9, which does not exist in sponsor_relationships (ids 1-4)"
-Khairat,DeathClaim.dependent,BORDERLINE,dependent_id,death_claims,1,1,0,1,"only one death_claims row exists in the test clone"
