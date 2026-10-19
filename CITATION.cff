@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based Database Applications: Reproducibility Artifact"
+type: software
+version: "1.4.0"
+authors:
+  - family-names: "Mohd Isa"
+    given-names: "Shahril"
+    email: "shahril3421@gmail.com"
+    affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
+  - family-names: "Emran"
+    given-names: "Nurul Akmar"
+    email: "nurulakmar@utem.edu.my"
+    affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
+date-released: "2026-10-18"
+doi: 10.5281/zenodo.21505973
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21505973
+    description: "Concept DOI on Zenodo (all versions; resolves to the latest version)"
+  - type: doi
+    value: 10.5281/zenodo.23293846
+    description: "Previous version (v1.3.0) on Zenodo"
+license: "MIT AND CC-BY-4.0"
+repository-code: "https://github.com/shahril8532/phd-caching-decision-model-artifact"
+keywords:
+  - caching
+  - ORM
+  - Eloquent
+  - Laravel
+  - database performance
+  - decision model
+  - software performance engineering
+abstract: >
+  Raw benchmark data (10 repeated runs per system), relationship inventories,
+  model-attributed eager-load counts, a provenance record, and benchmark harness code for a PhD thesis proposing a design-time
+  statistical decision rule (a two-tailed one-sample t-test over repeated
+  per-relationship cold/warm cache access measurements) for determining which
+  Eloquent/ORM relationships are worth caching before a caching layer is
+  implemented. Validated across three independently operated Laravel/Eloquent
+  systems: iTeams, Khairat Kematian, and the Vehicle Booking System (VBS).

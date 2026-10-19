@@ -1,0 +1,5 @@
+system,relationship,type,reason
+iTeams,Pegawai.sekolah,belongsTo,"Silent phantom: foreign-key column sekolah_id does not exist in table pegawais; resolves to null for every record (thesis Section 3.5.3)"
+iTeams,Sekolah.pegawai,belongsTo,"Silent phantom: foreign-key column pegawai_id does not exist in table sekolahs; resolves to null for every record (thesis Section 3.5.3)"
+iTeams,Unit.ppd,belongsTo,"Silent phantom: foreign-key column ppd_id does not exist in table units; resolves to null for every record (thesis Section 3.5.3)"
+iTeams,Unit.pkg,belongsTo,"Silent phantom: foreign-key column pkg_id does not exist in table units; resolves to null for every record (thesis Section 3.5.3)"

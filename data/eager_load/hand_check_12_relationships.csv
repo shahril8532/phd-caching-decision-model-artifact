@@ -1,0 +1,13 @@
+system,relationship,eager_model_attributed,eager_counted_by_hand,match
+Khairat,DeathClaim.contributionSetting,2,2,yes
+Khairat,Register.approvedByAjk,4,4,yes
+Khairat,Register.jawatan,9,9,yes
+Khairat,Register.paymentVerifiedBy,1,1,yes
+Khairat,User.loginLogs,0,0,yes
+VBS,Booking.vehicle,15,15,yes
+iTeams,DeviceRegistration.pegawai,1,1,yes
+iTeams,Rangkaian.kelajuan,11,11,yes
+iTeams,Rangkaian.ppd,5,5,yes
+iTeams,Tugas.pegawai,11,11,yes
+iTeams,Unit.pegawai,0,0,yes
+iTeams,User.jabatan,63,63,yes
