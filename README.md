@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21505973.svg)](https://doi.org/10.5281/zenodo.21505973)
 
-Reproducibility artifact, **version 1.4.0** (October 2026). All versions on Zenodo: <https://doi.org/10.5281/zenodo.21505973> (this DOI always resolves to the latest version; the DOI of this specific version is shown on its Zenodo page). Previous version: v1.3.0, <https://doi.org/10.5281/zenodo.23293846>.
+Reproducibility artifact, **version 1.4.1** (November 2026). All versions on Zenodo: <https://doi.org/10.5281/zenodo.21505973> (this DOI always resolves to the latest version; the DOI of this specific version is shown on its Zenodo page). Previous version: v1.4.0, <https://doi.org/10.5281/zenodo.23470844>. Version 1.4.1 adds the supplementary analyses below and adds the co-supervisor to the citation; no data file changed.
 
 PhD research of **Shahril bin Mohd Isa**, Fakulti Teknologi Maklumat dan Komunikasi (FTMK), Universiti Teknikal Malaysia Melaka (UTeM). Supervisor: Assoc. Prof. Ts. Dr. Nurul Akmar Emran. Co-supervisor: Dr. Nurul Izrin binti Md Saleh.
 
@@ -19,6 +19,10 @@ ORM frameworks such as Laravel's Eloquent hide the runtime cost of a data access
 | VBS | Vehicle Booking System (JPNM) | 16 |
 
 Result: 105 `CACHE`, 4 `DO_NOT_CACHE`, 2 `BORDERLINE`. Every relationship classified `DO_NOT_CACHE` resolves to null for every sampled record. Laravel's `Cache::remember()` never serves a cached null, so each access pays a cache round-trip without a hit. A confirmation experiment with a null-safe cache wrapper removes the regression (thesis Section 4.4.4).
+
+## Supplementary analyses (added in v1.4.1)
+
+`analysis/supplementary_analyses.py` reads the same archived data (no benchmark is re-run) and reports: (A) the classification with and without the four excluded relationships (105/8/2 of 115 when they are retained; no CACHE decision changes); (B) a null-share screening rule compared with Equation 4.1, including a leave-one-system-out threshold check (it reproduces all 109 decisive outcomes for any threshold from 0.80 to 0.99); (C) 95% confidence intervals of the mean speedup for the BORDERLINE and the narrowest CACHE relationships; and (D) the effect of relationships measured on few records. Run `python analysis/supplementary_analyses.py`. These analyses were carried out after the decision procedure had been fixed and on the same data; see thesis Sections 4.6.3 and 4.7.
 
 ## Repository structure
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.1 (November 2026), matches thesis v68
+
+- New `analysis/supplementary_analyses.py`: classification with and without the four excluded relationships, the null-share screening rule against Equation 4.1 (with leave-one-system-out thresholds), 95% confidence intervals for BORDERLINE relationships, and the effect of relationships measured on few records (thesis Sections 4.6.3 and 4.7). Read-only on the existing data.
+- CITATION.cff: co-supervisor Dr. Nurul Izrin Md Saleh added as author; previous-version DOI updated to v1.4.0.
+- No raw data, harness code or existing script changed.
+
 ## 1.4.0 (October 2026), matches thesis v44
 
 - Eager-load frequency is now counted per model: every `with()`, `load()` and `loadMissing()` call in the application code (app/, routes/, resources/views/) attributed to the model on which it is made (`analysis/eager_load_scan.py`, `data/eager_load/`). The earlier name-based count, kept in `relationship_inventories/`, credited each relationship name to every relationship of that name and missed some call sites. Only the eager-load results of thesis Sections 4.2 and 4.4.2 to 4.4.4 change; their conclusions do not.

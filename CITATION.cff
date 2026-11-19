@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this data or code, please cite it as below."
 title: "A Design-Time Decision Model for Determining Cache-Worthy Relationships in ORM-Based Database Applications: Reproducibility Artifact"
 type: software
-version: "1.4.0"
+version: "1.4.1"
 authors:
   - family-names: "Mohd Isa"
     given-names: "Shahril"
@@ -12,15 +12,18 @@ authors:
     given-names: "Nurul Akmar"
     email: "nurulakmar@utem.edu.my"
     affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
-date-released: "2026-10-18"
+  - family-names: "Md Saleh"
+    given-names: "Nurul Izrin"
+    affiliation: "Universiti Teknikal Malaysia Melaka (UTeM)"
+date-released: "2026-11-19"
 doi: 10.5281/zenodo.21505973
 identifiers:
   - type: doi
     value: 10.5281/zenodo.21505973
     description: "Concept DOI on Zenodo (all versions; resolves to the latest version)"
   - type: doi
-    value: 10.5281/zenodo.23293846
-    description: "Previous version (v1.3.0) on Zenodo"
+    value: 10.5281/zenodo.23470844
+    description: "Previous version (v1.4.0) on Zenodo"
 license: "MIT AND CC-BY-4.0"
 repository-code: "https://github.com/shahril8532/phd-caching-decision-model-artifact"
 keywords:
@@ -33,9 +36,11 @@ keywords:
   - software performance engineering
 abstract: >
   Raw benchmark data (10 repeated runs per system), relationship inventories,
-  model-attributed eager-load counts, a provenance record, and benchmark harness code for a PhD thesis proposing a design-time
-  statistical decision rule (a two-tailed one-sample t-test over repeated
-  per-relationship cold/warm cache access measurements) for determining which
-  Eloquent/ORM relationships are worth caching before a caching layer is
-  implemented. Validated across three independently operated Laravel/Eloquent
-  systems: iTeams, Khairat Kematian, and the Vehicle Booking System (VBS).
+  model-attributed eager-load counts, a provenance record, benchmark harness code
+  and analysis scripts for a PhD thesis proposing a design-time decision model:
+  a null-share check followed by a statistical decision rule (a two-tailed
+  one-sample t-test over repeated per-relationship cold/warm cache access
+  measurements) for determining which Eloquent/ORM relationships are worth
+  caching before a caching layer is implemented. Applied to three separately
+  deployed Laravel/Eloquent systems: iTeams, Khairat Kematian, and the Vehicle
+  Booking System (VBS).
